@@ -16,6 +16,7 @@ namespace CarentalLibrary.DataAcces.Entities
 
         public float TotalPrice { get; set; }
 
+
         [Required(ErrorMessage = "Bu alan zorunludur")]
         public DateTime? RentBegin { get; set; }
 
