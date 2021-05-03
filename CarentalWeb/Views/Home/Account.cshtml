@@ -1,0 +1,54 @@
+﻿@{
+    var ErrorMsg = Convert.ToString(TempData["AccError"]);
+}
+
+
+
+@if (!string.IsNullOrWhiteSpace(ErrorMsg))
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>@ErrorMsg</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+
+
+<div class="jumbotron text-center">
+    <h1 class="display-3">Hoşgeldin!</h1>
+    <p class="lead"><strong>Hesabım bölümünden</strong> işlemlerini ve kişisel bilgilerini kontrol edip düzenleyebilirsin.</p>
+    <hr>
+    <form asp-controller="Customer" asp-action="GetCustomerView">
+
+        <div class="form-row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <label>Lütfen müteri no gir</label>
+                @*<input class="form-control" name="customerId" id="" />*@
+                <div class="form-group col-lg-6">
+                    <label>Müşteri No</label>
+                    @*<input type="text" class="form-control" id="CustomerNoInput" asp-for="CustomerId">*@
+                    <select class="form-control" name="customerId" id="customerId">
+                        <option value="" disabled>Seçiniz</option>
+                        @foreach (var item in ViewBag.customers)
+                        {
+                            <option value="@item.Id">@item.Id</option>
+                        }
+                    </select>
+                    
+                </div>
+                <button class="btn btn-outline-info">Listele</button>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+
+
+    </form>
+
+    @*<p class="lead">
+            <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" role="button">Bilgilerine Ulaş</a>
+        </p>*@
+</div>

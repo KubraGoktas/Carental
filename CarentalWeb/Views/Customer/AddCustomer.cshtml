@@ -1,0 +1,69 @@
+﻿@model Customer
+
+@{
+
+    var SuccessMsg = Convert.ToString(TempData["RentSucces"]);
+    var ErrorMsg = Convert.ToString(TempData["RentError"]);
+}
+
+@if (!string.IsNullOrWhiteSpace(ErrorMsg))
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>@ErrorMsg</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+@if (!string.IsNullOrWhiteSpace(SuccessMsg))
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>@SuccessMsg</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<form name="form" asp-action="AddCustomer" asp-controller="Customer">
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2 col-sm-auto">Ad</label>
+        <input class="form-control col-lg-4 col-sm-auto" name="Name" id="Name" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2 col-sm-auto">Soyad</label>
+        <input class="form-control col-lg-4 col-sm-auto" name="Surname" id="Surname" asp-for="Surname" />
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2 col-sm-auto">Tel No</label>
+        <input class="form-control col-lg-4 col-sm-auto" name="Tel" id="Tel" asp-for="Tel" />
+        <span asp-validation-for="Tel" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2 col-sm-auto">E-Mail</label>
+        <input class="form-control col-lg-4 col-sm-auto" name="Mail" id="Mail" asp-for="Mail" />
+        <span asp-validation-for="Mail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2 col-sm-auto">Doğum Tarihi</label>
+        <input class="form-control col-lg-4 col-sm-auto" name="BirthDate" id="BirthDate" asp-for="BirthDate" />
+        <span asp-validation-for="BirthDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label col-lg-2 col-sm-auto">Kart Numarası</label>
+        <input class="form-control col-lg-4 col-sm-auto" name="CardNumber" id="CardNumber" asp-for="CardNumber" />
+        <span asp-validation-for="CardNumber" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-info">gönder</button>
+</form>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

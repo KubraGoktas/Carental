@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarentalLibrary", "CarentalLibrary\CarentalLibrary.csproj", "{A4F86324-A061-46A3-9755-4656E9C46644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarentalWeb", "CarentalWeb\CarentalWeb.csproj", "{CBC8F92E-52BF-4EB8-87B5-91402508DDEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4F86324-A061-46A3-9755-4656E9C46644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F86324-A061-46A3-9755-4656E9C46644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F86324-A061-46A3-9755-4656E9C46644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F86324-A061-46A3-9755-4656E9C46644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC8F92E-52BF-4EB8-87B5-91402508DDEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC8F92E-52BF-4EB8-87B5-91402508DDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC8F92E-52BF-4EB8-87B5-91402508DDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC8F92E-52BF-4EB8-87B5-91402508DDEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61A23CAB-9B5C-4526-BAF4-9A173CDF8C26}
+	EndGlobalSection
+EndGlobal

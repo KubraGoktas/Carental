@@ -1,0 +1,140 @@
+﻿@model CarentalWeb.Models.ViewModels.UpdateRentalVM
+@{
+
+    var SuccessMsg = Convert.ToString(TempData["Succes"]);
+    var ErrorMsg = Convert.ToString(TempData["Error"]);
+}
+
+@if (!string.IsNullOrWhiteSpace(ErrorMsg))
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>@ErrorMsg</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+@if (!string.IsNullOrWhiteSpace(SuccessMsg))
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>@SuccessMsg</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ArabaNo</th>
+            <th scope="col">Toplam Fiyat</th>
+            <th scope="col">Alış Tarihi</th>
+            <th scope="col">Veriş Tarihi</th>
+            <th scope="col">DELETE</th>
+            <th scope="col">UPDATE</th>
+            @*<th scope="col">DETAIL</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in ViewBag.custProList)
+        {
+            <tr>
+                <th scope="row"></th>
+                <td>@item.CarId</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.RentBegin</td>
+                <td>@item.RentEnd</td>
+                <td>@Html.ActionLink("Delete", "DeleteRental", "Rental", new { id = item.Id })</td>
+                <td><button class="getrental btn btn-info"  data-value="@item.Id">Güncelle</button></td>
+
+
+
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+
+
+<div class="modal fade bd-example-modal-lg rentalmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Araç Kiralama Formu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span class="card-detail-badge" id="model"></span>
+                <span class="card-detail-badge" id="brand"></span>
+                <span class="card-detail-badge" id="color"></span>
+                <span class="card-detail-badge" id="geartype"></span>
+                <span class="card-detail-badge" id="proyear"></span>
+
+                <form class="mt-3" asp-controller="Rental" asp-action="UpdateRental">
+                    <input type="hidden" id="Id" name="Id">
+                    <input type="text" class="form-control" id="CarPrice" value="" hidden />
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            <label>Araba No</label>
+                            <input type="text" class="form-control" id="CarId" value="" asp-for="CarId" readonly>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            <label>Müşteri No</label>
+                            <input type="text" class="form-control" id="CustomerNoInput" value="" asp-for="CustomerId" readonly>
+                            <span asp-validation-for="CustomerId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label id="CustomerName" class="mt-4"></label>
+                            <label id="CustomerSurname" class="mt-4"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            <label>Alış Tarihi</label>
+                            <input type="date" id="RentBegin" name="RentBegin" class="form-control dateinput" value="" asp-for="RentBegin">
+                            <span asp-validation-for="RentBegin" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Bitiş Tarihi</label>
+                            <input type="date" id="RentEnd" name="RentEnd" class="form-control dateinput" value="" asp-for="RentEnd">
+                            <span asp-validation-for="RentEnd" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            <label>Toplam Fiyat</label>
+                            <input class="form-control" type="text" id="TotalPrice" value="" asp-for="TotalPrice" readonly>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+}
