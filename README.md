@@ -1,2 +1,2 @@
 # Carental
-car rental app with mvc
+car rental app with asp.Net mvc.
